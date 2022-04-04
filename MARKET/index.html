@@ -6,36 +6,77 @@
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <title>Document</title>
-    <style>
-        .visual {position:relative;}
-        .visual img {width : 100%}
-        .visual button {
-            position: absolute; z-index: 10; top: 50%; transform: translateY(-50%);
-            width: 71px; height: 71px; border-radius: 100%; background-color: rgba(0,0,0,0.5);
-            border: none; 
-            /* border: none을 넣으면서 버튼 눌림효과를 없애준다 */
-        }
-        .visual button::before{ font-family: 'xeicon'; color:#fff; font-size: 45px; }
-        .visual button.slick-prev {left: 50px; font-size: 0; color: transparent;}
-        .visual button.slick-prev::before {content: "\e93d";}
-        .visual button.slick-next {right: 50px; font-size: 0; color: transparent;}
-        .visual button.slick-next::before {content: "\e940";}
-    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+
+    <title>Jenny Market</title>
+    <link rel="stylesheet" href="./main.css">
+    
 </head>
 <body>
-    <section class="visual " >
-        <div><img src="./image/main_image1.png" alt=""></div>
-        <div><img src="./image/main_image2.png" alt=""></div>
-        <div><img src="./image/main_image3.png" alt=""></div>
+    <div id="app">
+        <v-app>
+            <!-- 앱바 영역 -->
+            <v-app-bar app color="white">
+                <v-app-bar-nav-icon @click=" ndrawer = true"></v-app-bar-nav-icon>
+                <v-toolbar-title>전체 카테고리</v-toolbar-title>
+            </v-app-bar>
+
+            <!-- 서랍 영역 -->
+            <v-navigation-drawer v-model="ndrawer" temporary absolute>
+                <v-toolbar flat>
+                    <v-list>
+                        <v-list-item>
+                            <v-list-item-avatar>
+                                <v-icon>mdi-account</v-icon>
+                            </v-list-item-avatar>
+                        </v-list-item>
+                    </v-list>
+                </v-toolbar>
+            </v-navigation-drawer>
+
+
+            <!-- 본문 내용 -->
+            <v-main>
+                <v-container>
+                    <section class="visual">
+                        <div><img src="./image/main_image1.png" alt=""></div>
+                        <div><img src="./image/main_image2.png" alt=""></div>
+                        <div><img src="./image/main_image3.png" alt=""></div>
+                        
+                        <!-- <img src="//다른서버주소/파일.jpg"> -->
+                        
+                    </section>
+                </v-container>
+            </v-main>
+
+            <v-footer>
+                <div> Footer입니다 </div>
+            </v-footer>
+            
+        </v-app>
         
-        <!-- <img src="//다른서버주소/파일.jpg"> -->
         
-    </section>
-    
+    </div>
     <script type="text/javascript">
         $('.visual').slick();
     </script>
+
+    <script>
+        new Vue({
+            el : '#app',
+            vuetify : new Vuetify(),
+            data : {
+                ndrawer :false
+            }
+        })
+    </script>
+    
 
 </body>
 </html>
