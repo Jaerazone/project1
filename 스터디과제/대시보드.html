@@ -17,10 +17,10 @@
 
 </head>
 <body >
-    <div id="app"  >
+    <div id="app"   >
         <v-app >
             <!-- 앱바 영역 -->
-            <v-app-bar color="#f0f5fc" @click.stop="mini = true">
+            <v-app-bar app color="#f0f5fc" @click.stop="mini = true" >
                 <!-- @click.stop="mini = true" < 눌렀을때 꺼지게함. -->
                 <v-btn icon color="pink">
                     <v-icon>star</v-icon> 
@@ -39,10 +39,10 @@
             </v-app-bar>
 
             <!-- 서랍영역 -->
-            <v-navigation-drawer
+            <v-navigation-drawer 
             v-model="drawer"
             :mini-variant.sync="mini"
-            permanent
+            permanent absolute
             color="#f0f5fc">
             <!-- 
                 :mini-variant.sync : 
@@ -89,7 +89,7 @@
             </v-navigation-drawer>
                 <!-- 본문영역 -->
 
-                <v-content>
+                <v-content >
                     <v-container>
                         <v-card max-width="400">
                             <v-img src="https://picsum.photos/id/1068/400/300" aspect-ratio="2.3"></v-img>
