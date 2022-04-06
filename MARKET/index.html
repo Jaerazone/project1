@@ -48,10 +48,10 @@
                 <v-spacer></v-spacer>
                 <ul class="myicon">
                     <v-btn icon> 
-                        <v-icon>mdi-chef-hat</v-icon> 
+                        <v-icon>mdi-cards-heart-outline</v-icon> 
                     </v-btn>
                     <v-btn icon> 
-                        <v-icon>mdi-cards-heart-outline</v-icon> 
+                        <v-icon>mdi-cart</v-icon> 
                     </v-btn>
                     <v-btn icon> 
                         <v-icon>mdi-account-circle-outline</v-icon> 
@@ -103,33 +103,38 @@
                                 v-for="n in newitems"
                                 :key="n"
                                 v-slot="{ active, toggle }"
-                                
                             >
-                            
                                 <v-card
                                 class="ma-4"
-                                height="200"
-                                width="200"
+                                height="450"
+                                width="350"
                                 @click="toggle"
-                                >
-                                
+                                >   
+                                <v-img :src="n.src" aspect-ratio="1.2" >
                                     <v-row
-                                        class="fill-height"
+                                        class="d-flex justify-space-around fill-height"
                                         align="center"
                                         justify="center"
                                     >
-                                    <v-img :src="n.src">
                                     <!-- 클릭시 체크 -->
                                         <v-scale-transition>
                                             <v-icon
                                                 v-if="active"
                                                 color="white"
-                                                size="48"
-                                                v-text="'mdi-checkbox-marked-circle-outline'"
+                                                size="80"
+                                                v-text="'mdi-cart-plus'"
                                             >
                                             </v-icon>
                                         </v-scale-transition>
                                     </v-row>
+                                </v-img>
+                                <v-card-title><h5>{{n.name}}</h5></v-card-title>
+                                <v-card-text><h3>{{n.price}}원
+                                    <v-btn class="pink accent-2">구매</v-btn>
+                                    
+                                </h3></v-card-text>
+                                    
+                                    
                                 </v-card>
                             </v-slide-item>
                         </v-slide-group>
@@ -162,16 +167,16 @@
                 ],
                 model: null,
                 newitems: [
-                    { src: './image/신상품1.jpg', },
-                    { src: './image/신상품2.jpg', },
-                    { src: './image/신상품3.jpg', },
-                    { src: './image/신상품4.jpg', },
-                    { src: './image/신상품5.jpg', },
-                    { src: './image/신상품6.jpg', },
-                    { src: './image/신상품7.jpg', },
-                    { src: './image/신상품8.jpg', },
-                    { src: './image/신상품9.jpg', },
-                    { src: './image/신상품10.jpg', }
+                    { src: './image/신상품1.jpg', name : '잇딸리아 콰트로포르마지 수제화덕피자(330g)', price : 10900 },
+                    { src: './image/신상품2.jpg', name : '네기 우삼겹 생우동(740g)', price : 9900},
+                    { src: './image/신상품3.jpg', name : '[신규입점] 우리통밀스콘 80g*3입(플레인/크랜베리/쵸코칩)', price : 8900 },
+                    { src: './image/신상품4.jpg', name : '[입점특가] 문어닮은소떡(500g)', price : 11900},
+                    { src: './image/신상품5.jpg', name : '[맛보장] 땡초 닭갈비 (1인분, 200g)', price : 8900},
+                    { src: './image/신상품6.jpg', name : '[입점특가] 라쿠치나 간편 파스타 3종(알리오올리오 | 바질페스토 | 올리브토마토)', price : 6000},
+                    { src: './image/신상품7.jpg', name : 'MSC인증 붉은대게살 크래미(142g)', price : 3500},
+                    { src: './image/신상품8.jpg', name : '[MD추천]GAP 설향 딸기(특/500g)', price : 11000},
+                    { src: './image/신상품9.jpg', name : '(특품)저탄소인증 성주미니참외(1.5KG내외/10~12입)', price : 19500 },
+                    { src: './image/신상품10.jpg', name : '[출시특가] 오아시스 푸른바다 고등어 (360g)', price : 8000 }
                 ],
             }
         })

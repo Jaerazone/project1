@@ -1,45 +1,63 @@
 <template>
 
-<div class="black-bg" v-if= "모달창열렸니 == true" >
-  <div class="white-bg">
-    <h4>상세페이지임</h4>
-    <p>상세페이지 내용임 </p>
-    <button @click= "모달창열렸니 = false">닫기</button>
-  </div>
+<div v-if= "1==2">
+  안녕하세요
+</div>
+<div v-else-if= "1==3">
+  안녕하세요2
+</div>
+<div v-else>
+  안녕하세요3
 </div>
 
 <div class="menu">
   <a v-for="a in 메뉴들" :key="a">{{ a }}</a>
 </div>
 
-  <div v-for= "(oneroom,i) in 원룸들 " :key="i">
-    <img :src="oneroom[i].image" class="room-img">
-    <h4>{{oneroom[i].title}}</h4>
-    <p>{{oneroom[i].price}} 원</p>
-  </div>  
+<Modal :원룸들="원룸들" :누른거="누른거" :모달창열렸니작명="모달창열렸니" />
+
+<Discount/>
+
+<Card :원룸="원룸들[i]" v-for=" (작명,i) in 원룸들" :key="작명" />
+
+<!-- <Card :원룸="원룸들[1]" />
+<Card :원룸="원룸들[2]" />
+<Card :원룸="원룸들[3]" />
+<Card :원룸="원룸들[4]" />
+<Card :원룸="원룸들[5]" /> -->
+
+  
   
 </template>
 
 <script>
 
 import data from './assets/oneroom.js'
+import Discount from './DiscountBanner.vue';
+import Modal from './Modal.vue';
+import Card from './Card.vue';
 
 export default {
   name: 'App',
   data() {
     return {
+      누른거 : 0,
       원룸들 : data,
       모달창열렸니 : false,
+      신고수 : [0,0,0],
       메뉴들 : ['Home','Shop','About'],
+      produncts : ['역삼동원룸','천호동원룸','마포구원룸']
     }
   },
     methods : {
-      increase(i){
-        this.products(i).신고수 +=1;
+      increase(){
+        this.신고수 +=1;
       }
   },
   components: {
-    
+    Discount : Discount,
+    Modal : Modal,
+    Card : Card,
   }
 }
 </script>
@@ -52,6 +70,15 @@ body {
 div {
   box-sizing: border-box;
 }
+
+.discount {
+  background: #eee;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  
+}
+
 .black-bg {
   width : 100%; height: 100%;
   background: rgba(0,0,0,0.5);
